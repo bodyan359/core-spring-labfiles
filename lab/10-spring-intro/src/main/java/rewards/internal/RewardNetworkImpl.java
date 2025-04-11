@@ -32,6 +32,7 @@ import rewards.internal.reward.RewardRepository;
  * TODO-05: Review the RewardNetworkImpl configuration logic (Refer to the lab document)
  * TODO-06: Review sequence diagram (Refer to the lab document)
  */
+
 public class RewardNetworkImpl implements RewardNetwork {
 
 	private AccountRepository accountRepository;
@@ -56,7 +57,7 @@ public class RewardNetworkImpl implements RewardNetwork {
 	public RewardConfirmation rewardAccountFor(Dining dining) {
 		// TODO-07: Write code here for rewarding an account according to
 		//          the sequence diagram in the lab document
-		Account account =accountRepository.findByCreditCard(dining.getCreditCardNumber());
+		Account account = accountRepository.findByCreditCard(dining.getCreditCardNumber());
 		Restaurant restaurant = restaurantRepository.findByMerchantNumber(dining.getMerchantNumber());
 		MonetaryAmount monetaryAmount = restaurant.calculateBenefitFor(account, dining);
 		AccountContribution accountContribution = account.makeContribution(monetaryAmount);
